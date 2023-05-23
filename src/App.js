@@ -1,5 +1,5 @@
 import "./styles.css";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 
 export default function App() {
   return (
@@ -39,15 +39,29 @@ function StateCounter() {
   );
 }
 
+function counterReducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    case "reset":
+      return 0;
+    default:
+      throw "unknown action type: " + action.type;
+  }
+}
+
 function ReducerCounter() {
-  const count = 0;
+  const [count, dispatch] = useReducer(counterReducer, 0);
+
   return (
     <div className="counter">
       <div>{count}</div>
       <div>
-        <button onClick={() => {}}>-</button>
-        <button onClick={() => {}}>Reset</button>
-        <button onClick={() => {}}>+</button>
+        <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+        <button onClick={() => dispatch({ type: "reset" })}>Reset</button>
+        <button onClick={() => dispatch({ type: "increment" })}>+</button>
       </div>
     </div>
   );
