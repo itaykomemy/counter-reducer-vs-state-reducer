@@ -1,0 +1,9 @@
+.App {
+  font-family: sans-serif;
+}
+
+.counter {
+  width: 150px;
+  text-align: center;
+  font-size: 30px;
+}
