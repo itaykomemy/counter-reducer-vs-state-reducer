@@ -15,11 +15,11 @@ export default function App() {
 function StateCounter() {
   const [count, setCount] = useState(0);
 
-  function handleInc() {
+  function handleIncrement() {
     setCount(count + 1);
   }
 
-  function handleDec() {
+  function handleDecrement() {
     setCount(count - 1);
   }
 
@@ -31,23 +31,28 @@ function StateCounter() {
     <div className="counter">
       <div>{count}</div>
       <div>
-        <button onClick={handleDec}>-</button>
+        <button onClick={handleDecrement}>-</button>
         <button onClick={handleReset}>Reset</button>
-        <button onClick={handleInc}>+</button>
+        <button onClick={handleIncrement}>+</button>
       </div>
     </div>
   );
 }
 
 function ReducerCounter() {
-  const count = 0;
+  function handleIncrement() {}
+
+  function handleDecrement() {}
+
+  function handleReset() {}
+
   return (
     <div className="counter">
-      <div>{count}</div>
+      <div>N/A</div>
       <div>
-        <button onClick={() => {}}>-</button>
-        <button onClick={() => {}}>Reset</button>
-        <button onClick={() => {}}>+</button>
+        <button onClick={handleDecrement}>-</button>
+        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleIncrement}>+</button>
       </div>
     </div>
   );
