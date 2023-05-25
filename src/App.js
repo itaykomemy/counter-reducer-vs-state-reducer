@@ -13,11 +13,11 @@ export default function App() {
 function reducer(state, action) {
   switch (action.type) {
     case "incremenet":
-      return state + 1;
+      return { count: state.count + 1 };
     case "decrement":
-      return state - 1;
+      return { count: state.count - 1 };
     case "reset":
-      return 0;
+      return { count: 0 };
   }
   return state;
 }
@@ -37,7 +37,7 @@ function ReducerCounter() {
 
   return (
     <div className="counter">
-      <div>{state}</div>
+      <div>{state.count}</div>
       <div>
         <button onClick={handleDecrement}>-</button>
         <button onClick={handleReset}>Reset</button>
