@@ -23,7 +23,7 @@ function reducer(state, action) {
 }
 
 function ReducerCounter() {
-  const [state, dispatch] = useReducer(reducer, 0);
+  const [state, dispatch] = useReducer(reducer, { count: 0 });
 
   function handleIncremenet() {
     dispatch({ type: "incremenet" });
