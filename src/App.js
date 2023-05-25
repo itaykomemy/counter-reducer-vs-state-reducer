@@ -1,53 +1,47 @@
 import "./styles.css";
-import { useState } from "react";
+import { useReducer } from "react";
 
 export default function App() {
   return (
     <div className="App">
-      <h2>State Counter</h2>
-      <StateCounter />
       <h2>Reducer Counter</h2>
       <ReducerCounter />
     </div>
   );
 }
 
-function StateCounter() {
-  const [count, setCount] = useState(0);
-
-  function handleInc() {
-    setCount(count + 1);
+function reducer(state, action) {
+  switch (action.type) {
+    case "incremenet":
+      return state + 1;
+    case "decrement":
+      return state - 1;
+    case "reset":
+      return 0;
   }
-
-  function handleDec() {
-    setCount(count - 1);
-  }
-
-  function handleReset() {
-    setCount(0);
-  }
-
-  return (
-    <div className="counter">
-      <div>{count}</div>
-      <div>
-        <button onClick={handleDec}>-</button>
-        <button onClick={handleReset}>Reset</button>
-        <button onClick={handleInc}>+</button>
-      </div>
-    </div>
-  );
+  return state;
 }
 
 function ReducerCounter() {
-  const count = 0;
+  const [state, dispatch] = useReducer(reducer, 0);
+
+  function handleIncremenet() {
+    dispatch({ type: "incremenet" });
+  }
+  function handleDecrement() {
+    dispatch({ type: "decrement" });
+  }
+  function handleReset() {
+    dispatch({ type: "reset" });
+  }
+
   return (
     <div className="counter">
-      <div>{count}</div>
+      <div>{state}</div>
       <div>
-        <button onClick={() => {}}>-</button>
-        <button onClick={() => {}}>Reset</button>
-        <button onClick={() => {}}>+</button>
+        <button onClick={handleDecrement}>-</button>
+        <button onClick={handleReset}>Reset</button>
+        <button onClick={handleIncremenet}>+</button>
       </div>
     </div>
   );
