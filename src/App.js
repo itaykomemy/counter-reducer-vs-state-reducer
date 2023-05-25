@@ -10,34 +10,14 @@ export default function App() {
   );
 }
 
-function reducer(state, action) {
-  switch (action.type) {
-    case "incremenet":
-      return state + 1;
-    case "decrement":
-      return state - 1;
-    case "reset":
-      return 0;
-  }
-  return state;
-}
-
 function ReducerCounter() {
-  const [state, dispatch] = useReducer(reducer, 0);
-
-  function handleIncremenet() {
-    dispatch({ type: "incremenet" });
-  }
-  function handleDecrement() {
-    dispatch({ type: "decrement" });
-  }
-  function handleReset() {
-    dispatch({ type: "reset" });
-  }
+  function handleIncremenet() {}
+  function handleDecrement() {}
+  function handleReset() {}
 
   return (
     <div className="counter">
-      <div>{state}</div>
+      <div>n/a</div>
       <div>
         <button onClick={handleDecrement}>-</button>
         <button onClick={handleReset}>Reset</button>
